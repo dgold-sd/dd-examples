@@ -1,0 +1,275 @@
+## All options defined here are available to all instances.
+#
+init_config:
+
+    ## @param custom_metrics - list of mappings - optional
+    ## Collect custom metrics and send them to Datadog based on
+    ## your SQL server counters.
+    ##
+    ## See https://docs.datadoghq.com/integrations/guide/collect-sql-server-custom-metrics/
+    #
+    # custom_metrics:
+    #   - name: sqlserver.clr.execution
+    #     counter_name: CLR Execution
+  custom_metrics:
+  #   - name: sqlserver.clr.execution
+  #     counter_name: CLR Execution
+    - name: sqlserver.buffer.page_lookups
+      counter_name: Page lookups/sec
+    - name: sqlserver.buffer.page_reads
+      counter_name: Page reads/sec
+    - name: sqlserver.buffer.buffer_cache_hit_ratio_base
+      counter_name: Buffer cache hit ratio
+    - name: sqlserver.buffer.buffer_cache_hit_ratio
+      counter_name: Buffer cache hit ratio base
+    - name: sqlserver.buffer.lazy_writes_per_sec
+      counter_name: Lazy writes/sec
+    - name: sqlserver.workload.queued_requests
+      counter_name: Queued Requests
+      instance_name: internal
+    - name: sqlserver.databases.log_flushes
+      counter_name: Log Flushes/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.index_searches
+      counter_name: Index Searches/sec
+    - name: sqlserver.db.commit_table_entries
+      counter_name: Commit table entries
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.db.tracked_transactions_per_sec
+      counter_name: Tracked transactions/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.db.transactions_per_sec
+      counter_name: Transactions/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.db.batch_requests_per_sec
+      counter_name: Batch Requests/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.db.log_file_size
+      counter_name: Log File(s) Size (KB)
+      instance_name: ALL
+      object_name: MSSQL$SQLEXPRESS:Databases
+      tag_by: db
+    - name: sqlserver.db.data_file_size
+      counter_name: Data File(s) Size (KB)
+      instance_name: ALL
+      object_name: MSSQL$SQLEXPRESS:Databases
+      tag_by: db
+    - name: sqlserver.db.log_file_used_size
+      counter_name: Log File(s) Used Size (KB)
+      instance_name: ALL
+      object_name: MSSQL$SQLEXPRESS:Databases
+      tag_by: db
+    - name: sqlserver.db.sizetest
+      table: sys.database_files
+      counter_name: database_files
+      columns:
+        - size
+      tag_by: db
+# Locks
+    - name: sqlserver.LCK_M_S
+      table: sys.dm_os_wait_stats
+      counter_name: LCK_M_S
+      columns:
+        - max_wait_time_ms
+        - signal_wait_time_ms
+      tag_by: db
+    - name: sqlserver.lock.lock_requests_per_sec
+      counter_name: Lock Requests/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.lock.lock_timeouts_per_sec
+      counter_name: Lock Timeouts/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.lock.deadlocks_per_sec
+      counter_name: Number of Deadlocks/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.lock.lock_waits_per_sec
+      counter_name: Lock Waits/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.lock.lock_wait_time_ms
+      counter_name: Lock Wait Time (ms)
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.lock.avg_wait_time_ms
+      counter_name: Average Wait Time (ms)
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.lock.avg_wait_time_base
+      counter_name: Average Wait Time Base
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.lock.lock_timeouts_gt_0_per_sec
+      counter_name: Lock Timeouts (timeout > 0)/sec
+      instance_name: ALL
+      tag_by: db
+# Replication
+    - name: sqlserver.replica.commit_table_entries
+      counter_name: Commit table entries
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.recovery_queue
+      counter_name: Recovery Queue
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.redone_bytes_sec
+      counter_name: Redone Bytes/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.redones_sec
+      counter_name: Redones/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.log_send_queue
+      counter_name: Log Send Queue
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.log_apply_ready_queue
+      counter_name: Log Apply Ready Queue
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.log_apply_pending_queue
+      counter_name: Log Apply Pending Queue
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.log_bytes_replicated_sec
+      counter_name: Log Bytes Received/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.file_bytes_received_sec
+      counter_name: File Bytes Received/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.mirrored_write_transactions_sec
+      counter_name: Mirrored Write Transactions/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.transaction_delay
+      counter_name: Transaction Delay
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.group_commit_time
+      counter_name: Group Commit Time
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.group_commits_sec
+      counter_name: Group Commits/Sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.log_bytes_compressed_sec
+      counter_name: Log Bytes Compressed/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.log_compressions_sec
+      counter_name: Log Compressions/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.log_compression_cache_misses_sec
+      counter_name: Log Compression Cache misses/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.log_compression_cache_hits_sec
+      counter_name: Log Compression Cache hits/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.log_bytes_decompressed_sec
+      counter_name: Log Bytes Decompressed/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.log_decompressions_sec
+      counter_name: Log Decompressions/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.db_flow_control_delay
+      counter_name: Database Flow Control Delay
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.db_flow_controls_sec
+      counter_name: Database Flow Controls/sec
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.total_log_requiring_undo
+      counter_name: Total Log requiring undo
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.log_remaining_for_undo
+      counter_name: Log remaining for undo
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.redo_bytes_remaining
+      counter_name: Redo Bytes Remaining
+      instance_name: ALL
+      tag_by: db
+    - name: sqlserver.replica.redo_blocked_sec
+      counter_name: Redo blocked/sec
+      instance_name: ALL
+      tag_by: db
+    ## @param global_custom_queries - list of mappings - optional
+    ## See `custom_queries` defined below.
+    ##
+    ## Global custom queries can be applied to all instances using the
+    ## `use_global_custom_queries` setting at the instance level.
+    #
+    # global_custom_queries:
+    #   - query: <QUERY>
+    #     columns: <COLUMNS>
+    #     tags: <TAGS>
+
+    ## @param service - string - optional
+    ## Attach the tag `service:<SERVICE>` to every metric, event, and service check emitted by this integration.
+    ##
+    ## Additionally, this sets the default `service` for every log source.
+    #
+    # service: <SERVICE>
+
+## Every instance is scheduled independent of the others.
+##
+## Note: All '%' characters must be escaped as '%%'.
+#
+instances:
+
+    ## @param host - string - required
+    ## Host and port of your SQL server.
+    #
+  - host: 127.0.0.1,1433
+    username: datadog
+    password: <REDACTED>
+    connector: odbc # alternative is 'adodbapi'
+    driver: SQL Server
+    adoprovider: MSOLEDBSQL
+    
+  - host: 127.0.0.1,1433
+    username: datadog
+    password: <REDACTED>
+    stored_procedure: "GetOSLatchStats"
+    database: master
+    
+  #Log section
+logs:
+  - type: file
+    path: C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\Log\ERRORLOG
+    service: sqlserver
+    source: sqlserver
+    encoding: utf-16-le
+    log_processing_rules:
+      - type: multi_line
+        name: new_log_start_with_date
+        pattern: \d{4}\-\d{2}\-\d{2}  
+  - type: file
+    path: C:\test\*.out
+    service: sqlserver
+    source: sqlserver
+    encoding: utf-16-le
+    log_processing_rules:
+      - type: mask_sequences
+        name: mask_unicode
+        replace_placeholder: ""
+        pattern: \\[u][0]{4}
+
