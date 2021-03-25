@@ -6,6 +6,7 @@ The **sqlserver.d-conf.yaml** file should be added as conf.d/sqlserver.d/conf.ya
 
 It also contains a section to collect logs from test files (C:\test\*.out). This is used for my demo environment to add event logs for dashboards since my demo SQL Server instance does not always generate them in the ERRORLOG file. This can be ignored in a production environment.
 
+
 ## Stored Procedures
 
 The default table from which counters are drawn is the sys.dm_os_performance_counters table. The Datadog-SQL server check also supports sys.dm_os_wait_stats, sys.dm_os_memory_clerks, and sys.dm_io_virtual_file_stats.
@@ -17,3 +18,7 @@ If you want to collect counters from other tables, you can use stored procedures
 - sqlserver.latch.ACCESS_METHODS_ACCESSOR_CACHE_wait_time_ms
 - sqlserver.latch.ACCESS_METHODS_DATASET_PARENT_wait_time_ms
 
+
+## Documentation Links:
+- [Collecting metrics from DMV](https://docs.datadoghq.com/integrations/guide/collect-sql-server-custom-metrics/#collecting-metrics-from-dmv)
+- [Collecting metrics from a custom stored procedure](https://docs.datadoghq.com/integrations/guide/collect-sql-server-custom-metrics/#collecting-metrics-from-a-custom-procedure)
