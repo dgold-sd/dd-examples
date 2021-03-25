@@ -18,6 +18,11 @@ If you want to collect counters from other tables, you can use stored procedures
 - sqlserver.latch.ACCESS_METHODS_ACCESSOR_CACHE_wait_time_ms
 - sqlserver.latch.ACCESS_METHODS_DATASET_PARENT_wait_time_ms
 
+## Dashboard example
+
+An example dashboard export is included - **SQLServer-Overview--2021-03-25.json**. 
+
+For Datadog SEs, you can access this in the demo environment [here](https://app.datadoghq.com/dashboard/aum-ssg-i9v/sqlserver-overview-dsg)
 
 ## Documentation Links:
 - [Collecting metrics from DMV](https://docs.datadoghq.com/integrations/guide/collect-sql-server-custom-metrics/#collecting-metrics-from-dmv)
