@@ -41,3 +41,8 @@ BEGIN
 	SELECT * FROM #Datadog;
 
 END
+GO
+
+-- Grant permission to run the stored procedure
+GRANT EXECUTE ON [dbo].[GetOSLatchStats] To Public
+GO
