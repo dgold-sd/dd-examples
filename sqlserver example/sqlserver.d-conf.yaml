@@ -272,4 +272,6 @@ logs:
         name: mask_unicode
         replace_placeholder: ""
         pattern: \\[u][0]{4}
-
+  - type: windows_event
+    channel_path: Application
+    source: application_events
