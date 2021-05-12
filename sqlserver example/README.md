@@ -27,3 +27,4 @@ For Datadog SEs, you can access this in the demo environment [here](https://app.
 ## Documentation Links:
 - [Collecting metrics from DMV](https://docs.datadoghq.com/integrations/guide/collect-sql-server-custom-metrics/#collecting-metrics-from-dmv)
 - [Collecting metrics from a custom stored procedure](https://docs.datadoghq.com/integrations/guide/collect-sql-server-custom-metrics/#collecting-metrics-from-a-custom-procedure)
+- [Blog - Custom SQL Server metrics for detailed monitoring](https://www.datadoghq.com/blog/sql-server-metrics/)
